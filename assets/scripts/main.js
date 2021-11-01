@@ -47,12 +47,14 @@ async function fetchRecipes() {
 
     // Part 1 Expose - TODO
 
-    for(const i in recipes) {
+    for(const i in recipes) 
+    {
       fetch(recipes[i])
         .then(response => response.json())
         .then(data => {
           recipeData[recipes[i]] = data
-          if (Object.keys(recipeData).length == recipes.length) {
+          if (Object.keys(recipeData).length == recipes.length) 
+          {
             resolve(true);
           }
         })
@@ -71,7 +73,8 @@ function createRecipeCards() {
   // show any others you've added when the user clicks on the "Show more" button.
 
   // Part 1 Expose - TODO
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) 
+  {
     const card = document.createElement('recipe-card');
     card.data = recipeData[recipes[i]];
     document.querySelector('main').appendChild(card);
@@ -93,21 +96,26 @@ function bindShowMore() {
   let elements = []
   button.addEventListener('click', () => {
     show_more = !show_more
-    if (show_more) {
+    if (show_more) 
+    {
       button.innerHTML = 'Show less'
       img.src = 'assets/images/icons/arrow-up.png'
       img.alt = 'Arrow up'
-      for (let i = 3; i < recipes.length; i++) {
+      for (let i = 3; i < recipes.length; i++) 
+      {
         const card = document.createElement('recipe-card');
         card.data = recipeData[recipes[i]];
         document.querySelector('main').appendChild(card);
         elements.push(card)
       }
-    } else {
+    } 
+    else 
+    {
       button.innerHTML = 'Show more'
       img.src = 'assets/images/icons/arrow-down.png'
       img.alt = 'Arrow down'
-      while (elements.length) {
+      while (elements.length)
+      {
         const e = elements.pop()
         e.remove()
       }
