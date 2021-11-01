@@ -87,31 +87,4 @@ function bindShowMore() {
   // in the recipeData object where you stored them/
 
   // Part 2 Explore - TODO
-  const nkar = document.getElementById('button-wrapper').querySelector('img')
-  const button = document.getElementById('button-wrapper').querySelector('button')
-  let show_more = false
-  let elements = []
-  button.addEventListener('click', () => {
-    show_more = !show_more
-    if (show_more) {
-      button.innerHTML = 'Show less'
-      nkar.src = 'assets/images/icons/arrow-up.png'
-      nkar.alt = 'Arrow up'
-      for (let i = 3; i < recipes.length; i++) {
-        const card = document.createElement('recipe-card');
-        card.data = recipeData[recipes[i]];
-        document.querySelector('main').appendChild(card);
-        elements.push(card)
-      }
-    } else {
-      button.innerHTML = 'Show more'
-      nkar.src = 'assets/images/icons/arrow-down.png'
-      nkar.alt = 'Arrow down'
-      while (elements.length) {
-        const e = elements.pop()
-        e.remove()
-      }
-    }
-  })
-}
 }
