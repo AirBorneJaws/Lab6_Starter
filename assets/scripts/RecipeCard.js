@@ -99,65 +99,82 @@ class RecipeCard extends HTMLElement {
     
     const recipe = getRecipe(data);
 
-    const img1 = document.createElement('img')
-    card.appendChild(img1)
+    const img = document.createElement('img')
+    card.appendChild(img)
     const url = recipe.image.url ? recipe.image.url : recipe.image[0]
     img1.setAttribute('src', url)
     img1.setAttribute('alt', recipe.name)
 
-    const p1 = document.createElement('p')
-    card.appendChild(p1)
-    p1.setAttribute('class', 'title');
+    const text1 = document.createElement('p')
+    card.appendChild(text1)
+    text1.setAttribute('class', 'title');
 
-    const a1 = document.createElement('a')
-    p1.appendChild(a1)
-    a1.setAttribute('href', getUrl(data))
-    a1.innerHTML = recipe.name
+    const link1 = document.createElement('a')
+    text1.appendChild(link1)
+    link1.setAttribute('href', getUrl(data))
+    link1.innerHTML = recipe.name
 
-    const p2 = document.createElement('p')
-    card.appendChild(p2)
-    p2.setAttribute('class', 'organization')
-    p2.innerHTML = getOrganization(data)
+    const text2 = document.createElement('p')
+    card.appendChild(text2)
+    text2.setAttribute('class', 'organization')
+    text2.innerHTML = getOrganization(data)
 
     const div1 = document.createElement('div')
     card.appendChild(div1)
     div1.setAttribute('class', 'rating')
 
-    if (recipe.aggregateRating) {
+    if (recipe.aggregateRating) 
+    {
       const span1 = document.createElement('span')
       div1.appendChild(span1)
       span1.innerHTML = parseFloat(recipe.aggregateRating.ratingValue).toFixed(2)
       
       const img2 = document.createElement('img')
       div1.appendChild(img2)
-      if (recipe.aggregateRating.ratingValue < 0.5) {
+      if (recipe.aggregateRating.ratingValue < 0.5) 
+      {
         img2.setAttribute('src', 'assets/images/icons/0-star.svg')
         img2.setAttribute('alt', '0 star')
-      } else if (recipe.aggregateRating.ratingValue < 1.5) {
+      } 
+      else if (recipe.aggregateRating.ratingValue < 1.5) 
+      {
         img2.setAttribute('src', 'assets/images/icons/1-star.svg')
         img2.setAttribute('alt', '1 star')
-      } else if (recipe.aggregateRating.ratingValue < 2.5) {
+      } 
+      else if (recipe.aggregateRating.ratingValue < 2.5) 
+      {
         img2.setAttribute('src', 'assets/images/icons/2-star.svg')
         img2.setAttribute('alt', '2 stars')
-      } else if (recipe.aggregateRating.ratingValue < 3.5) {
+      }
+      else if (recipe.aggregateRating.ratingValue < 3.5) 
+      {
         img2.setAttribute('src', 'assets/images/icons/3-star.svg')
         img2.setAttribute('alt', '3 stars')
-      } else if (recipe.aggregateRating.ratingValue < 4.5) {
+      } 
+      else if (recipe.aggregateRating.ratingValue < 4.5) 
+      {
         img2.setAttribute('src', 'assets/images/icons/4-star.svg')
         img2.setAttribute('alt', '4 stars')
-      } else {
+      } 
+      else 
+      {
         img2.setAttribute('src', 'assets/images/icons/5-star.svg')
         img2.setAttribute('alt', '5 stars')
       } 
 
       const span2 = document.createElement('span')
       div1.appendChild(span2)
-      if (recipe.aggregateRating.reviewCount) {
+      if (recipe.aggregateRating.reviewCount) 
+      {
         span2.innerHTML = '(' + recipe.aggregateRating.reviewCount + ')'
-      } else if (recipe.aggregateRating.ratingCount) {
+      } 
+      else if (recipe.aggregateRating.ratingCount) 
+      {
       span2.innerHTML = '(' + recipe.aggregateRating.ratingCount + ')'
       }
-    } else {
+    } 
+    else 
+    {
       const span1 = document.createElement('span')
       div1.appendChild(span1)
       span1.innerHTML = 'No Reviews'
@@ -165,17 +182,20 @@ class RecipeCard extends HTMLElement {
     
     const time1 = document.createElement('time')
     card.appendChild(time1)
-    if (recipe.totalTime) {
+    if (recipe.totalTime) 
+    {
       time1.innerHTML = convertTime(recipe.totalTime)
-    } else if (recipe.cookTime) {
+    } 
+    else if (recipe.cookTime) 
+    {
       time1.innerHTML = convertTime(recipe.cookTime)
     }
     
     
-    const p3 = document.createElement('p') 
-    card.appendChild(p3)
-    p3.setAttribute('class', 'ingredients')
-    p3.innerHTML = createIngredientList(recipe.recipeIngredient)    
+    const text3 = document.createElement('p') 
+    card.appendChild(text3)
+    text3.setAttribute('class', 'ingredients')
+    text3.innerHTML = createIngredientList(recipe.recipeIngredient)    
 
     this.shadowRoot.appendChild(card)
     this.shadowRoot.appendChild(styleElem)
