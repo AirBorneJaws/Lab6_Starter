@@ -102,8 +102,8 @@ class RecipeCard extends HTMLElement {
     const img = document.createElement('img')
     card.appendChild(img)
     const url = recipe.image.url ? recipe.image.url : recipe.image[0]
-    img1.setAttribute('src', url)
-    img1.setAttribute('alt', recipe.name)
+    img.setAttribute('src', url)
+    img.setAttribute('alt', recipe.name)
 
     const text1 = document.createElement('p')
     card.appendChild(text1)
