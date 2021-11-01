@@ -87,7 +87,7 @@ function bindShowMore() {
   // in the recipeData object where you stored them/
 
   // Part 2 Explore - TODO
-    const nkar = document.getElementById('button-wrapper').querySelector('img')
+  const nkar = document.getElementById('button-wrapper').querySelector('img')
   const button = document.getElementById('button-wrapper').querySelector('button')
   let show_more = false
   let elements = []
